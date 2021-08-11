@@ -4,6 +4,10 @@ class StudentsController < ApplicationController
   end
 
   def post
-    render json: { message: "hello everybody!"}
+    render json: { message: "hello everybody!" }
+  end
+
+  def brew
+    render json: { message: "☕️" }
   end
 end
