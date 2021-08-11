@@ -10,4 +10,8 @@ class StudentsController < ApplicationController
   def brew
     render json: { message: "☕️" }
   end
+
+  def meow
+    render json: { message: "rrrrow" }
+  end
 end
