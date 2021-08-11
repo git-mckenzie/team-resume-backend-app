@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get "/test" => "students#test"
 
   get "/post" => "students#post"
+
+  get "/coffee" => "students#brew"
 end
