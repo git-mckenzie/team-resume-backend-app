@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "/post" => "students#post"
 
   get "/coffee" => "students#brew"
+
+  get "/cats" => "students#meow"
 end
