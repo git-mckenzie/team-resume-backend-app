@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   def test
-    render json: { message: "hi" }
+    render json: { message: "hi, how's it going?" }
   end
 
   def post
