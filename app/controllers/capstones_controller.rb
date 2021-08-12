@@ -10,6 +10,7 @@ class CapstonesController < ApplicationController
       description: params[:description],
       url: params[:url],
       screenshot: params[:screenshot],
+      student_id: current_user.id
     )
     capstone.save
     render json: capstone
