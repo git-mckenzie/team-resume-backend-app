@@ -1,7 +1,4 @@
 class StudentsController < ApplicationController
-  has_secure_password
-  validates :email, presence: true, uniqueness: true
-
   def index
     student = Student.all
     render json: student
