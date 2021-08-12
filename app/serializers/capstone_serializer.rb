@@ -1,3 +1,5 @@
 class CapstoneSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :description, :url, :screenshot
+
+  belongs_to :student
 end
