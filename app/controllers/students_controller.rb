@@ -1,4 +1,7 @@
 class StudentsController < ApplicationController
+  has_secure_password
+  validates :email, presence: true, uniqueness: true
+
   def index
     student = Student.all
     render json: student
@@ -9,7 +12,8 @@ class StudentsController < ApplicationController
       first_name: params["first_name"],
       last_name: params["last_name"],
       email: params["email"],
-      password_digest: params["password_digest"],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation],
       phone_number: params["phone_number"],
       bio: params["bio"],
       linkedin_url: params["linkedin_url"],
@@ -38,7 +42,8 @@ class StudentsController < ApplicationController
     student.first_name = params["first_name"] || student.first_name
     student.last_name = params["last_name"] || student.last_name
     student.email = params["email"] || student.email
-    student.password_digest = params["password_digest"] || student.password_digest
+    student.password = params["password"] || student.password
+    student.password_confirmation = params["password_confirmation"] || student.password_confirmation
     student.phone_number = params["phone_number"] || student.phone_number
     student.bio = params["bio"] || student.bio
     student.linkedin_url = params["linkedin_url"] || student.linkedin_url
