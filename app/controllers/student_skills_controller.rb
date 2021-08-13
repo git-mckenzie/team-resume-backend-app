@@ -9,8 +9,11 @@ class StudentSkillsController < ApplicationController
       student_id: current_user.id,
       skill_id: params[:skill_id],
     )
-    student_skill.save
-    render json: student_skill
+    if student_skill.save
+      render json: student_skill
+    else
+      render json: { errors: student_skill.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -22,8 +25,11 @@ class StudentSkillsController < ApplicationController
     student_skill = StudentSkill.find_by(id: params[:id])
     student_skill.student_id = params[:student_id] || student_skill.student_id
     student_skill.skill_id = params[:skill_id] || student_skill.skill_id
-    student_skill.save
-    render json: student_skill
+    if student_skill.save
+      render json: student_skill
+    else
+      render json: { errors: student_skill.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
