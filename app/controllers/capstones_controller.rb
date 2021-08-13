@@ -12,8 +12,11 @@ class CapstonesController < ApplicationController
       screenshot: params[:screenshot],
       student_id: current_user.id
     )
-    capstone.save
-    render json: capstone
+    if capstone.save
+      render json: capstone
+    else
+      render json: { errors: capstone.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -27,8 +30,11 @@ class CapstonesController < ApplicationController
     capstone.description = params[:description] || capstone.description
     capstone.url = params[:url] || capstone.url
     capstone.screenshot = params[:screenshot] || capstone.screenshot
-    capstone.save
-    render json: capstone
+    if capstone.save
+      render json: capstone
+    else
+      render json: { errors: capstone.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
