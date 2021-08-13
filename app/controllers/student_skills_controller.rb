@@ -1,6 +1,7 @@
 class StudentSkillsController < ApplicationController
+  before_action :authenticate_user
   def index
-    student_skills = StudentSkill.all
+    student_skills = StudentSkill.where("student_id = ?", current_user.id)
     render json: student_skills
   end
 
@@ -23,7 +24,7 @@ class StudentSkillsController < ApplicationController
 
   def update
     student_skill = StudentSkill.find_by(id: params[:id])
-    student_skill.student_id = params[:student_id] || student_skill.student_id
+    student_skill.student_id = current_user.id || student_skill.student_id
     student_skill.skill_id = params[:skill_id] || student_skill.skill_id
     if student_skill.save
       render json: student_skill

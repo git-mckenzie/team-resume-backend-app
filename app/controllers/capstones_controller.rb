@@ -1,6 +1,6 @@
 class CapstonesController < ApplicationController
   def index
-    capstones = Capstone.all
+    capstones = Capstone.where("student_id = ?", current_user.id)
     render json: capstones
   end
 
