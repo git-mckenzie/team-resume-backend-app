@@ -1,6 +1,7 @@
 class ExperiencesController < ApplicationController
+  before_action :authenticate_user
   def index
-    experience = Experience.all
+    experience = Experience.where("student_id = ?", current_user.id)
     render json: experience
   end
 
@@ -11,7 +12,7 @@ class ExperiencesController < ApplicationController
       job_title: params["job_title"],
       company: params["company"],
       details: params["details"],
-      student_id: params["student_id"],
+      student_id: current_user.id,
     )
     if experience.save
       render json: experience
@@ -34,7 +35,7 @@ class ExperiencesController < ApplicationController
     experience.job_title = params["job_title"] || experience.job_title
     experience.company = params["company"] || experience.company
     experience.details = params["details"] || experience.details
-    experience.student_id = params["student_id"] || experience.student_id
+    experience.student_id = current_user.id || experience.student_id
     if experience.save
       render json: experience
     else

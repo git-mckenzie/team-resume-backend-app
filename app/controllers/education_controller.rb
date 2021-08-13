@@ -2,7 +2,7 @@ class EducationController < ApplicationController
   before_action :authenticate_user
 
   def index
-    education = Education.all
+    education = Education.where("student_id = ?", current_user.id)
     render json: education
   end
 
@@ -13,7 +13,7 @@ class EducationController < ApplicationController
       degree: params["degree"],
       university_name: params["university_name"],
       details: params["details"],
-      student_id: params["student_id"],
+      student_id: current_user.id,
     )
     if education.save
       render json: education
@@ -36,7 +36,7 @@ class EducationController < ApplicationController
     education.degree = params["degree"] || education.degree
     education.university_name = params["university_name"] || education.university_name
     education.details = params["details"] || education.details
-    education.student_id = params["student_id"] || education.student_id
+    education.student_id = current_user.id || education.student_id
     if education.save
       render json: education
     else
