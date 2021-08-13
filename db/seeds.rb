@@ -1,8 +1,8 @@
 student1 = Student.create!(
-  first_name: "Ralph", last_name: "Garry", email: "ralph@example.com", password: "password", password_confirmation: "password", phone_number: "123-123-1234", linkedin_url: "example.com/linkedin", twitter_handle: "example.com/twitter", website: "example.com/website", resume_url: "example.com/resume", github_url: "example.com/github", photo_url: "example.com/profile", bio: "Ralph is a natural leader and natural follower. He is confused",
+  first_name: "Ralph", last_name: "Garry", email: "ralph@example.com", password: "password", password_confirmation: "password", phone_number: "123-123-1234", linkedin_url: "example.com/linkedin", twitter_handle: "example.com/twitter", website: "example.com/website", resume_url: "example.com/resume", github_url: "example.com/github", photo_url: "https://randomuser.me/api/portraits/lego/1.jpg", bio: "Ralph is a natural leader and natural follower. He is confused",
 )
 
-student2 = Student.create!(first_name: "Patricia", last_name: "Williams", email: "pat@example.com", password: "password", password_confirmation: "password", phone_number: "222-222-2222", linkedin_url: "example.com/linkedin", twitter_handle: "example.com/twitter", website: "example.com/website", resume_url: "example.com/resume", github_url: "example.com/github", photo_url: "example.com/profile", bio: "Pat is a rockstar... an actual rockstar!")
+student2 = Student.create!(first_name: "Patricia", last_name: "Williams", email: "pat@example.com", password: "password", password_confirmation: "password", phone_number: "222-222-2222", linkedin_url: "example.com/linkedin", twitter_handle: "example.com/twitter", website: "example.com/website", resume_url: "example.com/resume", github_url: "example.com/github", photo_url: "https://randomuser.me/api/portraits/women/8.jpg", bio: "Pat is a rockstar... an actual rockstar!")
 
 Experience.create!([
   { start_date: "2018-09-01", end_date: "2020-05-25", job_title: "programmer", company: "Google", student_id: student1.id },
